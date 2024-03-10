@@ -78,9 +78,6 @@
         .event-sub > div {
             height: 150px;
             width: 550px;
-            /* position: absolute;
-            top: 0;
-            left: 0; */
         }
         .event-sub > div:hover {
             cursor: pointer;
@@ -97,11 +94,11 @@
 
         <div class="main1">
             <div class="mainImg">
-                <div class="item">1</div>
-                <div class="item">2</div>
                 <div class="item">3</div>
                 <div class="item">4</div>
                 <div class="item">5</div>
+                <div class="item">1</div>
+                <div class="item">2</div>
             </div>
             <div class="arrow flex sb">
                 <div direction="-1">&nbsp; &#10096;</div>
@@ -131,70 +128,74 @@
                 </div>
             </div>
             <div class="event-sub">
-                <div class="event-sub-img">클릭!</div>
-                <div class="event-sub-img">클릭!</div>
-                <div class="event-sub-img">클릭!</div>
+                <div class="event-sub-img">클릭! 이벤트1</div>
+                <div class="event-sub-img">클릭! 이벤트2</div>
+                <div class="event-sub-img">클릭! 이벤트3</div>
             </div>
         </div>
     </main>
 
     <script>
-        // main1
-        const MainImgArr = Array.from(document.querySelectorAll('.mainImg > .item'))
+ 	// main1
 
-        function mainSlider(event) {
-            const unit = 1200
-            const mid = Math.trunc(MainImgArr.length / 2)
-            const direction = +event.target.getAttribute('direction')
+    const MainImgArr = Array.from(document.querySelectorAll('.mainImg > .item'))
+    let isAnimating = false
+    
+    function mainSlider(event) {
+        if(isAnimating) return
+        
+        isAnimating = true
+        const unit = 1200
+        const mid = Math.trunc(MainImgArr.length / 2)
+        const direction = +event.target.getAttribute('direction')
 
-            if(direction == 1) MainImgArr.push(MainImgArr.shift())
-            else               MainImgArr.splice(0,0,MainImgArr.pop())
+        if (direction == 1) MainImgArr.push(MainImgArr.shift())
+        else MainImgArr.splice(0, 0, MainImgArr.pop())
 
-            MainImgArr.forEach((e, index) => {
-                e.style.opacity = 0.2
-                e.style.left = -(unit * (mid-index)) + 'px'
-            })
+        MainImgArr.forEach((e, index) => {
+            e.style.opacity = 0.2
+            e.style.left = -(unit * (mid-index)) + 'px'
+        })
 
-            MainImgArr[mid].style.opacity = 1
-//             MainImgArr[0].style.opacity = 0
-//             MainImgArr[MainImgArr-1].style.opacity = 0
-        }
+        MainImgArr[mid].style.opacity = 1
+        MainImgArr[0].style.opacity = 0
+        MainImgArr[MainImgArr.length-1].style.opacity = 0
 
-        document.querySelectorAll('.arrow > div').forEach(e => e.onclick = mainSlider)
-        for(let i = 0; i < 7; i++) {
-            document.querySelector('.arrow > div:last-child').dispatchEvent(new Event('click'))
-        }
-        setInterval(
-            () => document.querySelector('.arrow > div:last-child').dispatchEvent(new Event('click')),4000
-        )
+        setTimeout(() => {
+            isAnimating = false
+        }, 500)
+        
+    }
+
+
+    document.querySelectorAll('.arrow > div').forEach(e => e.onclick = mainSlider)
+	for(let i = 0; i < 5; i++) {
+	    document.querySelector('.arrow > div:last-child').dispatchEvent(new Event('click'))
+	}
+    setInterval(() =>
+        document.querySelector('.arrow > div:last-child').dispatchEvent(new Event('click'))
+    , 4000)
 
 
         // main3
-        const subArr = Array.from(document.querySelectorAll('.event-sub > div'))
+    const subArr = Array.from(document.querySelectorAll('.event-sub > div'))
 
-        function mainEventClick(event) {
-            const mainArr = Array.from(document.querySelectorAll('.event-main > div'))
-            const index = subArr.findIndex(e => e == event.target)
+    function mainEventClick(event) {
+        const mainArr = Array.from(document.querySelectorAll('.event-main > div'))
+        const index = subArr.findIndex(e => e == event.target)
 
-            mainArr.forEach((e, idx) => {
-                if(idx === index) {
-                    e.classList.remove('hidden');
-                } else {
-                    e.classList.add('hidden')
-                }
-            });
-        }
+        mainArr.forEach((e, idx) => {
+            if(idx === index) {
+                e.classList.remove('hidden');
+            } else {
+                e.classList.add('hidden')
+            }
+        })
+    }
+    
+    document.querySelectorAll('.event-sub > div').forEach(e => e.onclick = mainEventClick)
 
-        function subSlider() {
-
-            subArr.push(subArr.shift())
-        }
-
-        document.querySelectorAll('.event-sub > div').forEach(e => e.onclick = mainEventClick)
-        for(let i = 0; i < 4; i++) {
-            subSlider()
-        }
-        setInterval(subSlider, 2000)
+        
 
 
     </script>
