@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.repository.ProductAdminDAO">
+	
+	<insert id="add" parameterType="product">
+		insert into product
+		<choose>
+			<when test="event.length() == 0">
+				(name, category_idx, content, price, image) values (#{name }, #{category_idx }, #{content }, #{price }, #{image })
+			</when>
+			<otherwise>
+				(name, category_idx, content, price, event, image) values (#{name }, #{category_idx }, #{content }, #{price }, #{event }, #{image })
+			</otherwise>
+		</choose>
+	</insert>
+	
+	<insert id="update" parameterType="product">
+		update product set name = #{name }, category_idx = #{category_idx }, content = #{content }, price = #{price },
+		<choose>
+			<when test="event.length() == 0">
+				event = '행사없음', image = #{image } where idx = #{idx }
+			</when>
+			<otherwise>
+				event = #{event }, image = #{image } where idx = #{idx }
+			</otherwise>
+		</choose>
+	</insert>
+	
+</mapper>
