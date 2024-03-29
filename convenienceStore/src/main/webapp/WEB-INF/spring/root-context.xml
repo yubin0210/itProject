@@ -21,11 +21,14 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-<!-- 		<property name="mapperLocations"> -->
-<!-- 			<list> -->
-<!-- 				<value>classpath:mybatis/survey-mapper.xml</value> -->
-<!-- 			</list> -->
-<!-- 		</property> -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mybatis/eventMapper.xml</value>
+				<value>classpath:mybatis/couponMapper.xml</value>
+<!-- 				<value>classpath:mybatis/member-mapper.xml</value> -->
+<!-- 				<value>classpath:mybatis/product-mapper.xml</value> -->
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
@@ -35,6 +38,7 @@
 	<context:component-scan base-package="com.itbank.service" />
 	<context:component-scan base-package="com.itbank.component" />
 	<context:component-scan base-package="com.itbank.exception" />
+	<context:component-scan base-package="com.itbank.oauth2" />
 	
 	<mybatis-spring:scan base-package="com.itbank.repository" />
 		

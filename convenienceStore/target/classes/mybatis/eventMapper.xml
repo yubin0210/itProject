@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+   "-//mybatis.org//DTD Mapper 3.0//EN" 
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+<mapper namespace="com.itbank.repository.EventRepository">
+	<select id="getEndEventList">
+	<![CDATA[
+		select * from eventBoard
+		where title like '%' || #{search} || '%'
+		and endDate < sysdate
+		order by idx desc
+		offset #{paging.offset} rows 
+		fetch next #{paging.fetch} rows only
+	]]>
+	</select>
+	
+	<select id="getCurrentEventList">
+	<![CDATA[
+		select * from eventBoard
+		where title like '%' || #{search} || '%'
+		and endDate >= sysdate
+		order by idx desc
+		offset #{paging.offset} rows 
+		fetch next #{paging.fetch} rows only
+	]]>
+	</select>
+	
+	<select id="selectCurrentCount">
+	<![CDATA[
+    	select count(*) from eventBoard
+    	where endDate >= sysdate
+    ]]>
+	        <if test='search != null'>
+	        	and title like '%' || #{search} || '%'
+	        </if>
+	</select>
+	
+	<select id="selectEndCount">
+	<![CDATA[
+    	select count(*) from eventBoard
+    	where endDate < sysdate
+    ]]>
+	        <if test='search != null'>
+	        	and title like '%' || #{search} || '%'
+	        </if>
+	</select>
+	
+	<delete id="deleteEvent">
+		delete eventBoard where idx = #{idx}
+	</delete>
+
+	<select id="selectOne">
+		select * from eventBoard where idx = #{idx}
+	</select>
+	
+	<select id="check">
+		select * from usercoupon where userid = #{userid} and coupon_idx = #{coupon_idx}
+	</select>
+	
+	<insert id="writeEvent">
+		insert into eventBoard (writer, coupon_idx, title, endDate, image)
+			values (#{writer}, #{coupon_idx}, #{title}, #{endDate}, #{image})
+	</insert>
+
+	<insert id="getUserCoupon">
+		insert into userCoupon (coupon_idx, userid, endDate)
+			values (#{coupon_idx}, #{userid}, #{valid} + sysdate)
+	</insert>
+	
+	<update id="modify">
+		update eventBoard set
+			coupon_idx = #{coupon_idx},
+			title = #{title},
+		<if test="image != null">
+            image = #{image},
+        </if>
+			endDate = #{endDate}
+        where idx = #{idx}
+	</update>
+
+</mapper>
