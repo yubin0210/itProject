@@ -19,7 +19,7 @@ public class UserCouponDTO {
    private Date issueDate;
    private Date endDate;
    private Date usedDate;
-   
+   private int valid;
    
    private String title;
    private String discValue;
@@ -73,6 +73,12 @@ public class UserCouponDTO {
    public void setUsedDate(Date usedDate) {
       this.usedDate = usedDate;
    }
+public int getValid() {
+	return valid;
+}
+public void setValid(int valid) {
+	this.valid = valid;
+}
    
    
    
