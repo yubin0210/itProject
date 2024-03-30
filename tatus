@@ -1,0 +1,31 @@
+[33mcommit e14b7c4d8c93527c7979cdb5b635f2bd71472127[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: foolcoding <fooling123@naver.com>
+Date:   Sat Mar 30 16:22:53 2024 +0900
+
+    usercouponDTO, root-context confilcts 해결
+
+[33mcommit a0288a1e51ff3d81a5b400cdf6b01bde857e62a5[m
+Author: foolcoding <fooling123@naver.com>
+Date:   Fri Mar 29 15:00:56 2024 +0900
+
+    usercouponDTO vaild 추가
+
+[33mcommit a1e9cbf4803abfe9f51d7977e91771d41e86f26d[m
+Author: yerang1018 <145122325+yerang1018@users.noreply.github.com>
+Date:   Fri Mar 29 14:55:52 2024 +0900
+
+    회원과 마이페이지
+    회원 : CRUD + 중복체크 + 네이버 로그인 api
+    마이페이지 : AJAX 를 이용한 리스트 수정 및 삭제
+
+[33mcommit 3541ba95357c5e3001415e22851d131573fb3dbc[m
+Author: foolcoding <fooling123@naver.com>
+Date:   Fri Mar 29 14:10:47 2024 +0900
+
+    쿠폰발급 게시판, 쿠폰관리, 장바구니, 결제, 결제후 이메일 전송
+
+[33mcommit 7cd68eb41074e92a190985ef64fdd12fdfe6ed54[m[33m ([m[1;31morigin/현웅[m[33m, [m[1;31morigin/진호[m[33m, [m[1;31morigin/유빈[m[33m, [m[1;31morigin/예랑[m[33m, [m[1;31morigin/민정[m[33m)[m
+Author: KgItBank03 <KgItBank03@DESKTOP-THCKDBK>
+Date:   Sun Mar 10 14:23:43 2024 +0900
+
+    시작

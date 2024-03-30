@@ -27,7 +27,7 @@ public class LoginController {
 	
 	@GetMapping("/oauth2_intergrated")
 	public ModelAndView oauth2_intergrated(String code, String state, HttpSession session) throws IOException, InterruptedException, ExecutionException {
-	    ModelAndView mav = new ModelAndView("oauth2");
+	    ModelAndView mav = new ModelAndView("/oauth2");
 	    
 	    OauthLogin oauthLogin = null;
 	    String provider = (String) session.getAttribute("provider");

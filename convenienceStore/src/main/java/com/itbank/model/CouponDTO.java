@@ -13,6 +13,8 @@ public class CouponDTO {
 	private String title;
 	private String discvalue;
 	private int valid;
+	
+	
 	public int getIdx() {
 		return idx;
 	}

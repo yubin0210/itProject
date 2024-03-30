@@ -63,7 +63,7 @@
 					<div class="listPadding">
 						<div class="flex couponList">
 							<div>${dto.title }</div>
-							<div>${dto.discValue }</div>
+							<div>${dto.discvalue }</div>
 							<div>${dto.issueDate }</div>
 							<div>${dto.endDate }</div>
 							<div>${dto.usedDate }</div>
