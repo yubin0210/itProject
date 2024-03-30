@@ -1,22 +1,32 @@
 package com.itbank.model;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
-public class ChatDTO {
+import org.springframework.web.socket.WebSocketSession;
 
 //	IDX      NOT NULL NUMBER        
 //	USERID1  NOT NULL VARCHAR2(500) 
-//	USERID2           VARCHAR2(500) 
+//	USERID2  NOT NULL VARCHAR2(500) 
 //	CHATDATE          DATE          
-//	STATUS            NUMBER     
+//	STATUS            NUMBER    
+public class ChatRoomDTO {
 
-	
-	private	int idx;
+	private int idx;
+//	private String roomId;
 	private String userid1;
 	private String userid2;
 	private Date chatDate;
 	private int status;
+	private Set<WebSocketSession> sessions = new HashSet<>();
 	
+//	public static ChatRoomDTO create(String userid) {
+//		ChatRoomDTO room = new ChatRoomDTO();
+//		room.roomId = UUID.randomUUID().toString().substring(0, 8);
+//		return room;
+//	}
 	
 	public int getIdx() {
 		return idx;
@@ -24,6 +34,13 @@ public class ChatDTO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
+//	public String getRoomId() {
+//		return roomId;
+//	}
+//	
+//	public void setRoomId(String roomId) {
+//		this.roomId = roomId;
+//	}
 	public String getUserid1() {
 		return userid1;
 	}
@@ -48,7 +65,12 @@ public class ChatDTO {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
+	public Set<WebSocketSession> getSessions() {
+		return sessions;
+	}
+	public void setSessions(Set<WebSocketSession> sessions) {
+		this.sessions = sessions;
+	}
 	
 	
 }

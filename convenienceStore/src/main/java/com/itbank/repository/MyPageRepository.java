@@ -6,7 +6,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import com.itbank.model.ChatDTO;
+import com.itbank.model.ChatRoomDTO;
+import com.itbank.model.FaqDTO;
 import com.itbank.model.MemberDTO;
 import com.itbank.model.MylocationDTO;
 import com.itbank.model.OrdersDTO;
@@ -114,10 +115,10 @@ public interface MyPageRepository {
 
 	
 	@Select("select * from faqboard where writer = #{userid}")
-	List<ChatDTO> faqboard(String userid);
+	List<FaqDTO> faqboard(String userid);
 
 	@Select("select * from chat where userid1 = #{userid} order by chatDate desc")
-	List<ChatDTO> chatList(String userid);
+	List<ChatRoomDTO> chatList(String userid);
 
 
 

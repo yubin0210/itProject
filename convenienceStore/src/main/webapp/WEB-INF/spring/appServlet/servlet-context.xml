@@ -33,7 +33,7 @@
 		<websocket:stomp-endpoint path="/endpoint">
 			<websocket:sockjs websocket-enabled="true" />
 		</websocket:stomp-endpoint>
-		<websocket:simple-broker prefix="/broker" />
+		<websocket:simple-broker prefix="/topic, /sendTo" />
 	</websocket:message-broker>
 	
 	<!-- 파일업로드 -->

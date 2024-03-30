@@ -115,7 +115,7 @@
             <c:if test="${login.role == 3 }">
             	<div class="header-cart"><a href="${cpath }/payment/cart">장바구니</a><div class="${count == '0' ? '':'header-cart-count' }">${count == '0' ? '':count }</div></div>
 	            <div><a href="${cpath }/myPage/myPageMain?userid=${login.userid}">마이페이지</a></div>
-	            <div><a href="${cpath }/inquiry">1:1 문의</a></div>
+	            <div><a href="${cpath }/inquiry/list">1:1 문의</a></div>
             </c:if>
          </c:if>
       </div>
