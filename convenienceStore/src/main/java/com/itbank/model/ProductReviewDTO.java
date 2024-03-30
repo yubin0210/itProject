@@ -2,36 +2,21 @@ package com.itbank.model;
 
 import java.sql.Date;
 
-public class ProductReviewDTO {
-
-	
 //	IDX         NOT NULL NUMBER         
 //	PRODUCT_IDX NOT NULL NUMBER         
 //	USERID      NOT NULL VARCHAR2(500)  
 //	SCORE                NUMBER         
 //	CONTENT     NOT NULL VARCHAR2(4000) 
-//	REVIEWDATE           DATE        
-	
+//	REVIEWDATE           DATE
+
+public class ProductReviewDTO {
 	private int idx;
 	private int product_idx;
 	private String userid;
-	private double score;
+	private int score;
 	private String content;
 	private Date reviewDate;
 	
-	
-	
-	private String name;
-	
-	
-	
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public int getIdx() {
 		return idx;
 	}
@@ -50,10 +35,10 @@ public class ProductReviewDTO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public double getScore() {
+	public int getScore() {
 		return score;
 	}
-	public void setScore(double score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 	public String getContent() {
@@ -70,5 +55,5 @@ public class ProductReviewDTO {
 	}
 	
 	
-	
 }
+

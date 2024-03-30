@@ -21,6 +21,35 @@ public class ProductDTO {
 	private String event;
 	
 	private MultipartFile upload;
+	private int InventoryCnt;
+	
+	private double scoreAvg;
+	private int likeCount;
+	
+
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
+
+	public double getScoreAvg() {
+		return scoreAvg;
+	}
+
+	public void setScoreAvg(double scoreAvg) {
+		this.scoreAvg = scoreAvg;
+	}
+
+	public int getInventoryCnt() {
+		return InventoryCnt;
+	}
+
+	public void setInventoryCnt(int inventoryCnt) {
+		InventoryCnt = inventoryCnt;
+	}
 
 	public int getIdx() {
 		return idx;

@@ -20,7 +20,24 @@ public class StoreDTO {
 	private String dong;
 	
 	private double scoreAvg;
+	private double distance;
+	
+	private int likeCount;
+	
+	
 
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
+	public double getDistance() {
+		return distance;
+	}
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
 	public double getScoreAvg() {
 		return scoreAvg;
 	}

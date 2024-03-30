@@ -7,32 +7,25 @@
         }
         .main1 {
             width: 1200px;
-            height: 300px;
+            height: 400px;
             position: relative;
             margin: 50px auto;
         }
-
         .mainImg {
             position: relative;
-            height: 300px;
+            height: 400px;
             overflow: hidden;
         }
         .mainImg > .item {
             box-sizing: border-box;
             position: absolute;
             width: 1200px;
-            height: 300px;
-            line-height: 300px;
-            text-align: center;
-            font-size: 40px;
+            height: 400px;
             transition-duration: 1s;
-            border-radius: 10px;
         }
-        .mainImg > .item:nth-child(5n + 1) { background-color: rgb(252, 190, 199);}
-        .mainImg > .item:nth-child(5n + 2) { background-color: rgb(253, 253, 195);}
-        .mainImg > .item:nth-child(5n + 3) { background-color: rgb(172, 252, 172);}
-        .mainImg > .item:nth-child(5n + 4) { background-color: rgb(165, 217, 250);}
-        .mainImg > .item:nth-child(5n + 0) { background-color: rgb(255, 196, 255);}
+        .mainImg > .item > img {
+        	border-radius: 20px;
+        }
 
         .arrow {
             width: 1200px;
@@ -65,7 +58,6 @@
             font-size: 40px;
             font-weight: bold;
         }
-
         .main3 > div {
             width: 550px;
             height: 500px;
@@ -94,11 +86,11 @@
 
         <div class="main1">
             <div class="mainImg">
-                <div class="item">3</div>
-                <div class="item">4</div>
-                <div class="item">5</div>
-                <div class="item">1</div>
-                <div class="item">2</div>
+                <div class="item"><img src="${cpath }/resources/image/home/home_main1.png" width="1200"></div>
+                <div class="item"><img src="${cpath }/resources/image/home/home_main2.png" width="1200"></div>
+                <div class="item"><img src="${cpath }/resources/image/home/home_main1.png" width="1200"></div>
+                <div class="item"><img src="${cpath }/resources/image/home/home_main2.png" width="1200"></div>
+                <div class="item"><img src="${cpath }/resources/image/home/home_main3.png" width="1200"></div>
             </div>
             <div class="arrow flex sb">
                 <div direction="-1">&nbsp; &#10096;</div>
@@ -108,23 +100,35 @@
         
         <div class="main2 flex sb">
             <div class="product-top10">
-                <div class="product-top10-text">오늘의 상품</div>
-                <div class="product-top10-img"></div>
+                <div class="product-top10-title">오늘의 상품</div>
+                <div class="product-top10-content">
+                	<c:forEach var="likedto" items="${list }" varStatus="status">
+                		<div class="product-top10-item">
+	                		<div class="product-top10-text">${status.index +1}</div>
+                			<div class="name">${likedto.name }</div>
+	                		<div class="product-top10-img"><img src="${likedto.image }"></div>
+                		</div>
+                	</c:forEach>
+                </div>
             </div>
             <div class="storeLikeTop">
-                <div class="storeLikeTop-text">오늘의 가맹점</div>
+                <div class="storeLikeTop-title">인기 가맹점</div>
+                <div class="storeLikeTop-content">
+					<div class="storeLikeTop-name">${storeDTO.name }</div>
+					<div class="storeLikeTop-likecount">${storeDTO.likeCount }</div>
+				</div>
             </div>
         </div>
         <div class="main3 flex sb">
             <div class="event-main">
                 <div class="event-main-img">
-                    <img src="resources/image/home/기본1.png" width="550px" height="500px">
+                    <img src="${cpath }/resources/image/home/기본1.png" width="550px" height="500px">
                 </div>
                 <div class="event-main-img hidden">
-                    <img src="resources/image/home/기본2.png" width="550px" height="500px">
+                    <img src="${cpath }/resources/image/home/기본2.png" width="550px" height="500px">
                 </div>
                 <div class="event-main-img hidden">
-                    <img src="resources/image/home/기본3.png" width="550px" height="500px">
+                    <img src="${cpath }/resources/image/home/기본3.png" width="550px" height="500px">
                 </div>
             </div>
             <div class="event-sub">
@@ -135,7 +139,7 @@
         </div>
     </main>
 
-    <script>
+<script>
  	// main1
 
     const MainImgArr = Array.from(document.querySelectorAll('.mainImg > .item'))
@@ -194,9 +198,7 @@
     }
     
     document.querySelectorAll('.event-sub > div').forEach(e => e.onclick = mainEventClick)
-
-        
-
+	
 
     </script>
 
