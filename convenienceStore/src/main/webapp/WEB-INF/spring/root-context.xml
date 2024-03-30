@@ -25,9 +25,9 @@
       <property name="mapperLocations">
          <list>
             <value>classpath:mybatis/eventMapper.xml</value>
-<!--              <value>classpath:mybatis/couponMapper.xml</value>-->
+			<value>classpath:mybatis/couponMapper.xml</value>
             <value>classpath:mybatis/member-mapper.xml</value>
-<!--             <value>classpath:mybatis/product-mapper.xml</value> -->
+			<!--  <value>classpath:mybatis/product-mapper.xml</value> -->
          </list>
       </property>
    </bean>
