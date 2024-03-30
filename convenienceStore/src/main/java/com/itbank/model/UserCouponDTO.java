@@ -22,7 +22,7 @@ public class UserCouponDTO {
    private int valid;
    
    private String title;
-   private String discValue;
+   private String discvalue;
    
    
    public String getTitle() {
@@ -31,11 +31,11 @@ public class UserCouponDTO {
    public void setTitle(String title) {
       this.title = title;
    }
-   public String getDiscValue() {
-      return discValue;
+   public String getDiscvalue() {
+      return discvalue;
    }
-   public void setDiscValue(String discValue) {
-      this.discValue = discValue;
+   public void setDiscValue(String discvalue) {
+      this.discvalue = discvalue;
    }
    public int getIdx() {
       return idx;

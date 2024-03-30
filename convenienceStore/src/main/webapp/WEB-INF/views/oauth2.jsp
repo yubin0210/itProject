@@ -16,7 +16,7 @@
 
 <script>
 	const cpath = 'http://localhost:8080/convenienceStore'
-	opener.location.href = '${cpath}${location}'
+	opener.location.href = cpath + '${location}'
 	window.close()
 </script>
 
