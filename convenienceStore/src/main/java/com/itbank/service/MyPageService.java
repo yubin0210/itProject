@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.itbank.component.HashComponent;
 import com.itbank.model.ChatDTO;
 import com.itbank.model.MemberDTO;
-import com.itbank.model.MyLocationDTO;
+import com.itbank.model.MylocationDTO;
 import com.itbank.model.OrdersDTO;
 import com.itbank.model.ProductDTO;
 import com.itbank.model.ProductReviewDTO;
@@ -75,7 +75,7 @@ public class MyPageService {
 	}
 
 
-	public List<MyLocationDTO> myLocation(String userid) {
+	public List<MylocationDTO> myLocation(String userid) {
 		return mpr.myLocation(userid);
 	}
 

@@ -121,7 +121,7 @@
 
 		</div>
 		<div class="flex myList">
-			<div class="listBox"><a href="${cpath }/myPage/myBasket">장바구니</a></div>
+			<div class="listBox"><a href="${cpath }/payment/cart">장바구니</a></div>
 			<div class="listBox"><a href="${cpath }/myPage/myCoupon?userid=${login.userid}">보유쿠폰</a></div>
 			<div class="listBox"><a href="${cpath }/myPage/myLikeList?userid=${login.userid}">찜 목록</a></div>
 			<div class="listBox"><a href="${cpath }/myPage/myReview?userid=${login.userid}">나의 후기</a></div>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.itbank.model.ChatDTO;
 import com.itbank.model.MemberDTO;
-import com.itbank.model.MyLocationDTO;
+import com.itbank.model.MylocationDTO;
 import com.itbank.model.OrdersDTO;
 import com.itbank.model.ProductDTO;
 import com.itbank.model.ProductReviewDTO;
@@ -110,7 +110,7 @@ public interface MyPageRepository {
 			+ "	FROM member m"
 			+ "	JOIN myLocation ml ON m.idx = ml.member_idx"
 			+ "	WHERE m.userid = #{userid}")
-	List<MyLocationDTO> myLocation(String userid);
+	List<MylocationDTO> myLocation(String userid);
 
 	
 	@Select("select * from faqboard where writer = #{userid}")

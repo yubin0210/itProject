@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.model.ChatDTO;
 import com.itbank.model.MemberDTO;
-import com.itbank.model.MyLocationDTO;
+import com.itbank.model.MylocationDTO;
 import com.itbank.model.OrdersDTO;
 import com.itbank.model.ProductDTO;
 import com.itbank.model.ProductReviewDTO;
@@ -35,7 +35,7 @@ public class MyPageController {
 	public ModelAndView myPageMain(@RequestParam(name = "userid") String userid) {
 		ModelAndView mav = new ModelAndView();
 		
-		List<MyLocationDTO> list = new ArrayList<>();
+		List<MylocationDTO> list = new ArrayList<>();
 		
 		list = mps.myLocation(userid);
 		
