@@ -3,29 +3,21 @@
 <%@ include file="../header.jsp" %>
 
 <style>
-	
-		.loginForm {
-			padding-bottom: 400px;
-		}
-        .joinLogo {
-           font-size: 35px;
+
+       	.loginForm {
+            padding-top: 100px;
+            padding-bottom: 600px;
+        }
+        .loginLogo {
+           font-size: 25px;
            padding-top: 50px;
-           padding-bottom: 30px;
+           padding-bottom: 70px;
+           color : #5d6a7c;
         }
         .login {
            height: 322px;
       	   display: grid;
       	   place-items: center;
-      	   padding-bottom: 300px;
-        }
-        .loginLogo {
-           font-size: 35px;
-           color : #5d6a7c;
-           padding: 100px 0px;
-        }
-        .loginMainLogo {
-           font-size: 35px;
-           padding: 70px 0px;
         }
         #loginPadding {
            width: 300px;

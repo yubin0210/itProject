@@ -9,10 +9,8 @@
 
 <style>
 	.deleteForm {
-		width: 900px;
-		margin: auto;
-		padding-top: 60px;
-		padding-bottom: 300px;
+      padding-top: 100px;
+      padding-bottom: 300px;
 	}	
 	form {
 		text-align: center;
@@ -57,6 +55,12 @@
 		font-size: 17px;
 		font-weight: bold;
 	}
+	h2 {
+		padding-left: 45%;
+		padding-top: 40px;
+		padding-bottom: 60px;
+		color: #5d6a7c;
+	}
 
 
 </style>
@@ -70,7 +74,7 @@
 <div class="frame">
 	<div class="deleteForm">
 	
-		<h3>회원 탈퇴</h3>
+		<h2>회원 탈퇴</h2>
 		
 		<form method="POST">
 			<div class="inputPadding">

@@ -291,7 +291,7 @@
 		</div>
 	</c:if>
 	<c:if test="${not empty list }">
-	<div class="storeName">현재 매장 : ${storeName }</div>
+	<div class="storeName"><a href="${cpath }/product/storeList/${store_idx}">현재 매장 : ${storeName }</a></div>
 	<div class="selectAll flex sb">
 		<div>
 			<input type="checkbox" id="selectAll">
@@ -422,7 +422,6 @@
 	        
 	        sumPrice += cnt * price
     	})
-    	
         if(discvalue.includes('%')){	// % 포함될때 할인 계산
         	discvalue = +discvalue.replace('%', '')
         	discvalue = 100 / discvalue
@@ -431,13 +430,10 @@
         else{	// % 포함되지않을때 toLocaleString() 적용시키기 위함
 			discvalue = +discvalue
 		}
-		
      	total = sumPrice  - discvalue
-     		
 		if(total < 0){	// 할인금액이 총 상품 가격 넘을때 0원으로 표시
 			total = 0
 		}
-    	
 	    document.getElementById('allPrice').innerHTML = '<b>' + sumPrice.toLocaleString() + '</b>원'
  	    document.getElementById('discPrice').innerHTML = '<b>-' + discvalue.toLocaleString() + '</b>원'
 	    document.getElementById('resultPrice').innerHTML = '<b>' + total.toLocaleString() + '</b>원'

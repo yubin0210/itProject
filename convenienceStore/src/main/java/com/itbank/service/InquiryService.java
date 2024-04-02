@@ -17,4 +17,16 @@ public class InquiryService {
 		return ir.selectList();
 	}
 
+	public int insert(FaqDTO dto) {
+		return ir.insert(dto);
+	}
+
+	public int delete(int idx) {
+		return ir.delete(idx);
+	}
+
+
+
+	
+
 }

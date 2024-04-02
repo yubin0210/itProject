@@ -113,11 +113,17 @@ public class MemberRestController {
 		
 		int row = ms.checkUseridExist(userid);
 		
-		if(row != 0) {
-			return "계정이 존재합니다.";	
+		if(userid.equals("")) {
+			return "입력해주세요.";
+			
 		}
 		else {
-			return "계정이 존재하지 않습니다.";	
+			if(row != 0) {
+				return "계정이 존재합니다.";	
+			}
+			else {
+				return "계정이 존재하지 않습니다.";	
+			}
 		}
 	}
 	
@@ -201,15 +207,22 @@ public class MemberRestController {
 		String userpw = param.get("userpw");
 		String userpwCheck = param.get("doubleCheck");
 		
+		System.out.println(param);
+		System.out.println(param.get("userpw"));
+		System.out.printf("[%s], [%s]\n", userpw, userpwCheck);
 		int row = 0;
 		
-		if(userpw.equals(userpwCheck)) {
-			row = 1;
+		if(userpw.equals("") || userpwCheck.equals("")) {
+		    row = -1;
 		}
 		else {
-			row = 0;
+			if(userpw.equals(userpwCheck)) {
+				row = 1;
+			}
+			else {
+				row = 0;
+			}
 		}
-		
 		return row;
 	}
 

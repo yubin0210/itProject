@@ -22,7 +22,6 @@ public interface MemberRepository {
 			+ "values (#{userid}, #{userpw}, #{email}, #{nickname}, #{role}, #{pnum})")
 	int join(MemberDTO dto);
 
-
 	
 	@Select("select count(*) from member where userid = #{userid}")
 	int useridDuplicate(String userid);

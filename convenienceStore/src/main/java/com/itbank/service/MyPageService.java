@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itbank.component.HashComponent;
-import com.itbank.model.ChatRoomDTO;
+import com.itbank.model.ChatDTO;
 import com.itbank.model.FaqDTO;
 import com.itbank.model.MemberDTO;
 import com.itbank.model.MylocationDTO;
@@ -86,7 +86,7 @@ public class MyPageService {
 	}
 
 
-	public List<ChatRoomDTO> chatList(String userid) {
+	public List<ChatDTO> chatList(String userid) {
 		return mpr.chatList(userid);
 	}
 	

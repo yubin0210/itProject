@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.repository.HomeDAO">
+	
+	<select id="selectLocation" parameterType="int" resultType="myLocation">
+		select * from mylocation where member_idx = #{member_idx}
+	</select>
+	
+	<insert id="setLocation" parameterType="myLocation">
+		insert into mylocation (member_idx, address, lat, lng) 
+		values (#{member_idx}, #{address}, #{lat}, #{lng})
+	</insert>
+	
+	<update id="updateLocation" parameterType="myLocation">
+		update mylocation 
+		set address = #{address}, lat = #{lat}, lng = #{lng} where member_idx = #{member_idx}
+	</update>
+	
+</mapper>

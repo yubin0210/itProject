@@ -8,75 +8,87 @@
 <title>Insert title here</title>
 
 <style>
+   .boxFrame {
+      width: 1200px;
+       margin: auto;
+   }
+   table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      text-align: center;
+   }
+   thead > tr {
+      background-color: #f8f8f8;
+      border-top: 2px solid #666666;
+      border-bottom: 1px solid #FFFFFF;
+      height: 65px;
+   }
+   thead > tr > th {
+      font-size: 18px;
+      font-weight: bold;
+   }
+   tbody > tr {
+      height: 100px;
+      border-bottom: 1px solid #B2B2B2;
+   }
+   tbody > tr > td.title {
+      font-size: 20px;
+      font-weight: bold;
+   }
+   h2 {
+      margin: 20px;
+   }
+   .center {
+      text-align: center;
+      color: grey;
+   }
+   .bold {
+      font-weight: bold;
+   }
+   .boxFrame > div.flex {
+      margin-top: 50px;
+      margin-bottom: 50px;
+   }
 
-	p {
-		padding-left: 40px;
-	}
-	div.couponTitle {
-		align-items: center;
-		font-size: 20px;
-		font-weight: bold;
-	}
-	div.couponTitle > div {
-		flex: 1;
-		padding: 40px;
-	}
-	div.couponList {
-		border: 1px solid #eee;
-	}
-	div.couponList > div {
-		flex: 1;
-		padding: 40px;
-	}
-	div.couponList:hover {
-		border: 1px solid #1E90FF;
-	
-	}
-	div.listPadding {
-		padding: 10px 0px;
-	}
-	
-	
+   
 </style>
 
 </head>
 <body>
 
-	<div class="frame">
-		<div class="table">
-		<div class="userCouponTitle">
-			<div class="flex couponTitle">
-				<h2>주문내역</h2>
-				<p>${login.userid }님</p>
-			</div>
+	<div class="boxFrame">
+		<div class="flex">
+			<h2>주문내역</h2>
 		</div>
 			
-			<div class="couponBox">
-				<div class="flex couponTitle">
-					<div>매장명</div>
-					<div>픽업코드</div>
-					<div>주문일</div>
-					<div>픽업일</div>
-					<div>결제금액</div>
-				</div>
-				<c:forEach var="dto" items="${list }">
-					<div class="listPadding">
-						<div class="flex couponList">
-							<div>${dto.name }</div>
-							<div>${dto.pickupCode }</div>
-							<div>${dto.orderDate }</div>
-							<div>${dto.pickupTime }</div>
-							<div>${dto.amount }</div>
-						</div>
-					</div>
-				</c:forEach>
-				
-			</div>
+		<div class="boxList">
+      	<table>
+         <thead>
+            <tr>
+               	<th>매장명</th>
+               	<th>픽업코드</th>
+               	<th>주문일</th>
+				<th>픽업일</th>
+				<th>결제금액</th>
+           </tr>
+         </thead>
+         <tbody>
+           <c:forEach var="dto" items="${list }">
+              <tr>
+                <td>${dto.name }</td>
+                <td>${dto.pickupCode }</td>
+	    		<td>${dto.orderDate }</td>
+	    		<td>${dto.pickupTime }</td>
+	    		<td>${dto.amount }</td>		
+              </tr>
+           </c:forEach>
+         </tbody>
+      </table>
+   </div>
+
+</div>
 			
-			
-		
-		</div>
-	
-	</div>
+
 </body>
 </html>

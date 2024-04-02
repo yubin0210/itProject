@@ -2,6 +2,7 @@ package com.itbank.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.model.MemberDTO;
+import com.itbank.model.MylocationDTO;
 import com.itbank.model.StoreDTO;
 import com.itbank.model.StoreReviewDTO;
 import com.itbank.service.StoreService;
@@ -23,10 +25,20 @@ public class StoreController {
 	@Autowired StoreService service;
 	
 	@GetMapping("/list")
-	public ModelAndView search() {
+	public ModelAndView search(HttpSession session) {
+		MemberDTO login = (MemberDTO) session.getAttribute("login");
+		if(login == null) {
+			ModelAndView mav = new ModelAndView("/alertNeedLogin");
+			return mav;
+		}
+		MylocationDTO dto = service.selectLocation(login.getIdx());
+		if(dto == null) {
+			ModelAndView mav = new ModelAndView("/store/alertNeedSetmyLoc");
+			return mav;
+		}
 		ModelAndView mav = new ModelAndView();
 	    List<StoreDTO> list = service.selectList();
-	    mav.addObject("list", list);
+	    mav.addObject("storeList", list);
 	    return mav;
 	}
 	
@@ -58,11 +70,5 @@ public class StoreController {
 		mav.addObject("myReview", myReview);
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
 	
 }

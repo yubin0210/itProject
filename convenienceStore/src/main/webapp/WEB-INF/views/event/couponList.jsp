@@ -109,16 +109,16 @@
 	
 	<div class="center">
 		<c:if test="${paging.prev }">
-			<a href="${cpath }/event/couponlist/${paging.begin - 10}?search=${param.search}">이전</a>
+			<a href="${cpath }/event/couponList/${paging.begin - 10}?search=${param.search}">이전</a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
 			<a class="${paging.page == i ? 'bold' : '' } pageNum" 
-			   href="${cpath }/event/couponlist/${i}?search=${param.search}">${i }</a>
+			   href="${cpath }/event/couponList/${i}?search=${param.search}">${i }</a>
 		</c:forEach>
 		
 		<c:if test="${paging.next }">
-			<a href="${cpath }/event/couponlist/${paging.end + 1}?search=${param.search}">다음</a>
+			<a href="${cpath }/event/couponList/${paging.end + 1}?search=${param.search}">다음</a>
 		</c:if>
 	</div>
 	

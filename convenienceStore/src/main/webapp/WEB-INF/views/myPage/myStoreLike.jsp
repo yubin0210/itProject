@@ -8,75 +8,92 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	p {
-		padding-left: 40px;
-	}
-	div.LikeTitle {
-		align-items: center;
-		font-size: 20px;
-		font-weight: bold;
-	}
-	div.likeHead > div {
-		flex: 1;
-		padding: 40px;
-	}
-	div.ProductLikeList {
-		border: 1px solid #eee;
-	}
-	div.ProductLikeList > div {
-		flex: 1;
-		padding: 40px;
-	}
-	div.ProductLikeList:hover {
-		border: 1px solid #1E90FF;
-	
-	}
-	div.listPadding {
-		padding: 10px 0px;
-	}
-	div.miniTitle > div {
-		flex: 1;
-	}
-	
+   .boxFrame {
+      width: 1200px;
+        margin: auto;
+   }
+   table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      text-align: center;
+   }
+   thead > tr {
+      background-color: #f8f8f8;
+      border-top: 2px solid #666666;
+      border-bottom: 1px solid #FFFFFF;
+      height: 65px;
+   }
+   thead > tr > th {
+      font-size: 18px;
+      font-weight: bold;
+   }
+   tbody > tr {
+      height: 100px;
+      border-bottom: 1px solid #B2B2B2;
+   }
+   tbody > tr > td.title {
+      font-size: 20px;
+      font-weight: bold;
+   }
+   h2 {
+      margin: 20px;
+   }
+   .center {
+      text-align: center;
+      color: grey;
+   }
+   .bold {
+      font-weight: bold;
+   }
+   input[type="search"] {
+      width: 400px;
+      height: 40px;
+      border-radius: 30px;
+      margin-left: 400px;
+   }
+   .boxFrame > div.flex {
+      margin-top: 50px;
+      margin-bottom: 50px;
+   }
 
+   
 </style>
+
 </head>
 <body>
 
+	<div class="boxFrame">
+		<div class="flex">
+			<h2><a href="${cpath }/myPage/myLikeList?userid=${login.userid}">상품 찜목록</a></h2>
+			<h2><a href="${cpath }/myPage/myStoreLike?userid=${login.userid }">매장 찜목록</a></h2>
+		</div>
+			
+   	<div class="boxList">
+      <table>
+         <thead>
+            <tr>
+               <th>가게명</th>
+               <th>주소</th>
+               <th>가게번호</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            <c:forEach var="dto" items="${list }">
+            <tr>
+				<td>${dto.name }</td>
+                <td>${dto.address }</td>
+                <td>${dto.pnum }</td>
+            </tr>
+            </c:forEach>
+         </tbody>
+      </table>
+      
+   </div>
 
-	<div class="frame">
-		<div class="table">
-		<div class="LikeTitle">
-			<div class="flex miniTitle">
-				<div><a href="${cpath }/myPage/myLikeList">상품 찜목록</a></div>
-				<div><a href="${cpath }/myPage/myStoreLike">매장 찜목록</a></div>
-			</div>
-		</div>
-			
-			<div class="LikeBox">
-				<div class="flex likeHead">
-					<div>매장명</div>
-					<div>주소</div>
-					<div>전화번호</div>
-				</div>
-				<c:forEach var="dto" items="${list }">
-					<div class="listPadding">
-						<div class="flex ProductLikeList">
-							<div>${dto.name }</div>
-							<div>${dto.address }</div>
-							<div>${dto.pnum }</div>
-							
-						</div>
-					</div>
-				</c:forEach>
-				
-			</div>
-			
-			
-		
-		</div>
-	
-	</div>
+</div>
+
 
 </body>
 </html>

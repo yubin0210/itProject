@@ -41,5 +41,14 @@
 	
 </div>
 
+<script>
+	function load() {
+		const cartCount = document.querySelector('.header-cart > div')
+		cartCount.classList.remove('.header-cart-count')
+		cartCount.innerText = ''
+	}
+	window.addEventListener('DOMContentLoaded', load)
+</script>
+
 </body>
 </html>

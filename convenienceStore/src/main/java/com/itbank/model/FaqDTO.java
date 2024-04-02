@@ -8,7 +8,6 @@ package com.itbank.model;
 public class FaqDTO {
 	
 	private int idx;
-	private String writer;
 	private String title;
 	private String answer;
 	
@@ -17,12 +16,6 @@ public class FaqDTO {
 	}
 	public void setIdx(int idx) {
 		this.idx = idx;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
 	}
 	public String getTitle() {
 		return title;

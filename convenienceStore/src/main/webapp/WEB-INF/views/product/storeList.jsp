@@ -616,6 +616,11 @@
 		 const productIdx = modal.querySelector('.modal-name').getAttribute('idx')
 		 const url = "${cpath}/product/addCart"
 		 
+		 // 선택한 수량이 0개일 경우
+		 if(inputValue == '0') {
+			 alert('선택된 수량이 없습니다')
+			 return
+		 }
 		 
 		 const ob ={
 			store_idx: storeIdx,

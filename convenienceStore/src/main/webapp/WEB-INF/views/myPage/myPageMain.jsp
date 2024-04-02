@@ -25,6 +25,7 @@
 		color : #1E90FF;
 		font-size: 50px;
 		padding-right: 60px;
+		font-weight: bold;
 	}
 	.myPageUserid {
 		font-size: 35px;
@@ -41,11 +42,12 @@
 		background-color: #1E90FF;
 		width: 250px;
 		padding: 10px;
-		font-size: 15px;
+		font-size: 17px;
 		border: 1px solid #ddd;
   		border-radius: 10px;
 		color : white;
 		box-sizing: content-box;
+		font-weight: bold;
 	}
 	.myList {
 		width: 900px;
@@ -53,16 +55,14 @@
 		height: 130px;
 		text-align: center;
 		align-items: center;
-		border-radius: 5px;
+		border-radius: 10px;
 	}
 	.listBox {
 		width: 20px;
 		height: 30px;
 		font-size: 18px;
 		flex: 1;
-		
 	}
-
 	.myInfo, .payInfo {
 		border-bottom: 1px solid #eee;
 	}
@@ -88,6 +88,7 @@
 		color : #4E5968;
   		border-radius: 7px;
   		font-weight: bold;
+  		border: 1px solid #ddd;
 	}
 	.infoBox {
 		width: 902px;
@@ -105,7 +106,7 @@
 			<p class="myPageUserid">${login.userid } 님</p>
 		</div>
 		<div class="flex myLocation">
-			<div id="LocationPadding"><a href="${cpath }/myPage/myPageLocation"><button id="LocationButton">현재 위치 지정하러가기</button></a></div>
+			<div id="LocationPadding"><a href="${cpath }/myLocation"><button id="LocationButton">현재 위치 지정하러가기</button></a></div>
 		
 		<c:if test="${empty list}">
 		    <p>위치가 지정되어 있지 않습니다.</p>
@@ -145,7 +146,7 @@
 			<h3 class="headTitle">문의 내역</h3>
 			<div class="flex">
 				<p><a href="${cpath }/myPage/myChatList?userid=${login.userid}">1:1 문의 내역</a></p>
-				<p><a href="${cpath }/myPage/myFAQ">자주 묻는 질문</a></p>
+				<p><a href="${cpath }/inquiry/list">자주 묻는 질문</a></p>
 			</div>
 		</div>
 		

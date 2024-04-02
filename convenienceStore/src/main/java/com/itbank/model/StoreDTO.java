@@ -23,8 +23,6 @@ public class StoreDTO {
 	private double distance;
 	
 	private int likeCount;
-	
-	
 
 	public int getLikeCount() {
 		return likeCount;

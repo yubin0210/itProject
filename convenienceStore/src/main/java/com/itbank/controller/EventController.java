@@ -151,5 +151,5 @@ public class EventController {
 		System.out.println(row != 1 ? "수정 성공" : "수정 실패");
 		return "redirect:/event/list/1";
 	}
-	
+
 }

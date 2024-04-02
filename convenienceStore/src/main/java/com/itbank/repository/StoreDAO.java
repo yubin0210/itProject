@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import com.itbank.model.MylocationDTO;
 import com.itbank.model.StoreDTO;
 import com.itbank.model.StoreReviewDTO;
 
@@ -70,4 +71,8 @@ public interface StoreDAO {
 			+ "    FETCH FIRST 1 ROWS ONLY"
 			+ " )s ON store.idx = s.store_idx")
 	StoreDTO selectStoreLikeTop();
+
+	@Select(" select * from mylocation where member_idx = #{idx} ")
+	MylocationDTO selectMyLocation(int idx);
+	
 }

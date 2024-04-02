@@ -1,7 +1,5 @@
 package com.itbank.model;
 
-import java.sql.Date;
-
 //IDX       NOT NULL NUMBER         
 //TITLE     NOT NULL VARCHAR2(1000) 
 //DISCVALUE NOT NULL VARCHAR2(100)  

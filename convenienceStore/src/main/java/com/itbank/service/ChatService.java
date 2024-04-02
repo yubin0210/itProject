@@ -1,11 +1,9 @@
 package com.itbank.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.itbank.model.ChatRoomDTO;
+import com.itbank.model.ChatDTO;
 import com.itbank.model.MessageDTO;
 import com.itbank.repository.ChatDAO;
 
@@ -22,7 +20,7 @@ public class ChatService {
 		return dao.createRoom(userid);
 	}
 
-	public List<ChatRoomDTO> getRoom(String userid) {
+	public List<ChatDTO> getRoom(String userid) {
 		return dao.selectRoom(userid);
 	}
 
@@ -31,7 +29,8 @@ public class ChatService {
 	}
 
 	public int exitChat(String userid) {
-		return dao.exit(userid);
+		int row = dao.exit(userid);
+		return row;
 	}
 
 	public List<MessageDTO> getMsg(int chat_idx) {

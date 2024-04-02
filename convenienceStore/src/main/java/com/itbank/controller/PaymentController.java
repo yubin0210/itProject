@@ -32,8 +32,10 @@ public class PaymentController {
 		List<CartDTO> list = ps.cartList(userid);
 		if(!list.isEmpty()) {
 			CartDTO dto = list.get(0);
+			int store_idx = dto.getStore_idx();
 			String storeName = ps.getStoreName(dto.getStore_idx());
 			mav.addObject("storeName", storeName);
+			mav.addObject("store_idx", store_idx);
 		}
 		List<UserCouponDTO> userCouponList = cs.getuserCouponList(userid);
 		
@@ -77,6 +79,8 @@ public class PaymentController {
 	        if(couponIdx != 0) {
 	        	int row = cs.updateCoupon(couponIdx);
 	        }
+	        
+	        session.setAttribute("count", 0);
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();

@@ -20,6 +20,8 @@ public class ProductDTO {
 	private String image;
 	private String event;
 	
+	private String eventTemp;
+	
 	private MultipartFile upload;
 	private int InventoryCnt;
 	
@@ -114,6 +116,11 @@ public class ProductDTO {
 	public void setUpload(MultipartFile upload) {
 		this.upload = upload;
 	}
-	
+	public String getEventTemp() {
+		return eventTemp;
+	}
+	public void setEventTemp(String eventTemp) {
+		this.eventTemp = eventTemp;
+	}
 	
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.itbank.model.ChatRoomDTO;
+import com.itbank.model.ChatDTO;
 import com.itbank.model.MemberDTO;
 import com.itbank.model.MessageDTO;
 import com.itbank.service.ChatService;
@@ -34,7 +34,7 @@ public class ChatController {
 	}
 	
 	@GetMapping("/getRoom/{userid}")
-	public List<ChatRoomDTO> getRoom(@PathVariable("userid") String userid) {
+	public List<ChatDTO> getRoom(@PathVariable("userid") String userid) {
 		return service.getRoom(userid);
 	}
 	
@@ -43,9 +43,12 @@ public class ChatController {
 		return service.chatList();
 	}
 	
-	@GetMapping("/exitChat/{userid}")
-	public int exitChat(@PathVariable("userid") String userid) {
-		return service.exitChat(userid);
+	@GetMapping("/exitChat")
+	public int exitChat(HttpSession session) {
+		MemberDTO login = (MemberDTO) session.getAttribute("login");
+		String userid = login.getUserid();
+		int row = service.exitChat(userid);
+		return row;
 	}
 	
 	@GetMapping("/getMsg/{chat_idx}")

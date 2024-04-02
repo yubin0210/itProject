@@ -11,8 +11,8 @@ public class MylocationDTO {
 	private int idx;
 	private int member_idx;
 	private String address;
-	private double lat;
-	private double lng;
+	private String lat;
+	private String lng;
 	
 	public int getIdx() {
 		return idx;
@@ -32,16 +32,16 @@ public class MylocationDTO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public double getLat() {
+	public String getLat() {
 		return lat;
 	}
-	public void setLat(double lat) {
+	public void setLat(String lat) {
 		this.lat = lat;
 	}
-	public double getLng() {
+	public String getLng() {
 		return lng;
 	}
-	public void setLng(double lng) {
+	public void setLng(String lng) {
 		this.lng = lng;
 	}
 	

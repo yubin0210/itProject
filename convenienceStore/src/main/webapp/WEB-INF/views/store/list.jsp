@@ -169,7 +169,7 @@
 		<h1>검색 결과</h1>
 		
 		<table id="resultTable">
-			<c:forEach var="dto" items="${list }">
+			<c:forEach var="dto" items="${storeList }">
 			<tr class="${dto.idx }">
 				<td class="storeName">${dto.name }</td>
 				<td class="store">${dto.address }</td>

@@ -82,7 +82,7 @@
 		width: 350px;
 	}
 	.review {
-		height: 250px;
+		height: fit-content;
 		background-color: #f5f5f5;
 		border-radius: 10px;
 	}
@@ -449,8 +449,7 @@
 <script>
 	const login = "${login.userid}"
 	const productIdx = document.querySelector('.product').getAttribute('index')
-	console.log(productIdx)
-
+	
 	const likeBtn = document.querySelector('.product-main-likeBtn')
 // 	const storeTable = document.getElementById('store-list-table')
 	
@@ -681,7 +680,6 @@
 		const pagingDiv = document.getElementById('paging')
 		
 		reviewList = await selectReviewFunction()
- 		reviewList.forEach(dto => console.log(dto)) // 매우 잘 출력
 		reviewSize = Math.ceil((reviewList.length)/pageSize)
 		// Math.ceil : 값 올림
 		
@@ -689,7 +687,7 @@
 		
 		for(let i=1; i<= reviewSize; i++) {
 			const btn = document.createElement('div')
-			let tag = '[' + i + ']'
+			let tag = ' ' + i + ' '
 			btn.innerText = tag
 			btn.addEventListener('click', function(event) {
 				currentPage = i

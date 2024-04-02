@@ -19,19 +19,17 @@
 		}
 	
 		.joinForm {
-           width: 1200px;
-            margin: auto;
+ 			padding-left: 30%;
             padding-bottom: 300px;
+            padding-top: 100px;
         }
         .joinLogo {
-           font-size: 35px;
+           font-size: 25px;
            padding-top: 50px;
            padding-bottom: 30px;
+           color : #5d6a7c;
         }
-     	p.joinContent {
-           font-size: 22px;
-           padding-bottom: 100px;
-        }	
+
         div.submitPadding {
 			padding: 40px 0px;
 		}
@@ -96,20 +94,19 @@
 
 <div class="frame">
 	<div class="joinForm">
-	<h2 class="joinLogo">GS25 신규 회원가입</h2>
+	<h2 class="joinLogo">회원가입</h2>
 	
-	<p class="joinContent">고객과 함께 내일을 꿈꾸며, 새로운 삶의 가치를 창조하는 GS리테일 회원가입을 환영합니다.</p>
 	
    <form method="POST" class="joinInput">
     
       	<div class="title">아이디</div>
-      		<div class="flex">
+      	<div class="flex">
       		<input id="userid" type="text" name="userid" required autofocus>
       		<div class="idCheckPadding">
       			<button type="button" id="checkIdButton">ID 중복확인</button>	
       			<span id="result1"></span>
       		</div>
-      </div>
+      	</div>
       
       <div class="title">비밀번호</div>
       <input type="password" name="userpw" required>

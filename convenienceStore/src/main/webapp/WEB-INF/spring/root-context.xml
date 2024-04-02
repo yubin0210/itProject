@@ -27,7 +27,9 @@
 				<value>classpath:mybatis/eventMapper.xml</value>
 				<value>classpath:mybatis/couponMapper.xml</value>
 				<value>classpath:mybatis/member-mapper.xml</value>
-<!-- 				<value>classpath:mybatis/product-mapper.xml</value> -->
+				<value>classpath:mybatis/productAdmin-mapper.xml</value>
+				<value>classpath:mybatis/productShop-mapper.xml</value>
+				<value>classpath:mybatis/myLocation-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -5,80 +5,107 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.js"></script>  
 
 <style>
-.hidden {
-	display: none;
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-.chatList {
+.listFrame {
     position: fixed;
-    bottom: 60px; /* Adjust based on the chat frame's position */
-    left: 10px;
-    width: 200px; /* Adjust width as needed */
-    max-height: 300px; /* Adjust height as needed */
-    overflow-y: auto; /* Allows scrolling if there are many chat rooms */
+    bottom: 20px;
+    left: 20px;
+    width: 350px;
+    height: 500px;
     border: 1px solid #ccc;
     background-color: #FFF;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 채팅 목록 타이틀 스타일 */
+.listFrame h3 {
+    padding: 15px;
+    margin: 0;
+    background-color: #f7f7f7;
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+/* 채팅방 목록 스타일 */
+.chatList {
+    flex-grow: 1;
+    overflow-y: auto;
     padding: 10px;
 }
 
 .chatRoom {
-    background-color: #EFEFEF; /* Light grey to distinguish chat rooms */
-    color: #333; /* Dark text for contrast */
-    padding: 8px 12px;
-    margin: 5px 0;
-    border-radius: 15px;
+    background-color: #EFEFEF;
+    color: #333;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .chatRoom:hover {
-    background-color: #DDD; /* Slightly darker on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    background-color: #e0e0e0;
 }
 
-.chatRoom:last-child {
-    margin-bottom: 0; /* Remove margin from the last item */
-}
 
-/* Scrollbar Styles for chatList */
-.chatList::-webkit-scrollbar {
-    width: 8px;
-}
-
-.chatList::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-}
-
-.chatList::-webkit-scrollbar-thumb {
-    background: #888; 
-}
-
-.chatList::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-}
-
-#chat {
+/* 채팅창 스타일 */
+#chat .chatFrame {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.visible {
-	display: flex;
-}
-
-.chatFrame {
+    bottom: 20px;
+    right: 20px;
     width: 400px;
     height: 600px;
     border: 1px solid #ccc;
     background-color: #FFF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     flex-direction: column;
     overflow: hidden;
+    transition: bottom 0.5s ease-in-out;
+}
+
+.buttons {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons .buttons .btn-close {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.btn-close {
+    padding: 6px 12px;
+    background-color: #d9534f; /* 버튼 배경색 */
+    color: white; /* 버튼 내 텍스트 색상 */
+    font-weight: bold; /* 텍스트 굵기 */
+    border: none; /* 테두리 제거 */
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+    transition: background-color 0.2s ease-in-out; /* 호버 애니메이션 */
+    outline: none; /* 포커스 시 테두리 제거 */
+    margin-left: 10px; /* 왼쪽 버튼과의 간격 */
+}
+
+.btn-close:hover {
+    background-color: #c9302c; /* 호버 시 배경색 변경 */
+}
+
+.btn-close:focus {
+    outline: none; /* 포커스 시 외곽선 제거 */
+    box-shadow: 0 0 0 2px rgba(217, 83, 79, .5); /* 포커스 시 그림자 효과 */
 }
 
 .chatArea {
@@ -89,32 +116,28 @@
 }
 
 .message-left, .message-right {
-    padding: 5px 10px;
+    padding: 10px 15px;
     border-radius: 20px;
-    margin: 5px;
-    display: inline-block;
-    clear: both;
+    margin: 5px 0;
+    word-break: break-word;
 }
 
 .message-left {
     background-color: #e0e0e0;
-    margin-left: 10px;
-    text-align: left;
-    float: left;
+    align-self: flex-start;
 }
 
 .message-right {
     background-color: #0084ff;
     color: white;
-    margin-right: 10px;
-    text-align: right;
-    float: right;
+    align-self: flex-end;
 }
 
+/* 입력 영역 스타일 */
 .ipt {
-    display: flex;
-    background-color: #F0F0F0;
     padding: 10px;
+    background-color: #F0F0F0;
+    display: flex;
 }
 
 .input-message {
@@ -123,7 +146,6 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 20px;
-    outline: none;
 }
 
 .btn-send {
@@ -133,51 +155,46 @@
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.2s;
 }
 
 .btn-send:hover {
     background-color: #005ecb;
 }
-
-/* Scrollbar styles for chatArea */
-.chatArea::-webkit-scrollbar {
-    width: 8px;
+.chatOpenButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0084ff;
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.chatArea::-webkit-scrollbar-track {
-    background: #f1f1f1;
+.hidden {
+	display: none;
 }
 
-.chatArea::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-.chatArea::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-.btn-exit, .btn-close {
-	border-radius: 50px;
-	width: 16px;
-	height: 16px;
-	text-align: center;
-}
-.btn-exit {
-	background-color: #FA5858;
-}
-.btn-close {
-	background-color: #2EFE64;
+.visible {
+	display: flex;
 }
 
 </style>
-<div class="chatList">
-</div>
+<div class="listFrame">
+	<h3>채팅목록</h3>
+	<div class="chatList">
+	</div>
+</div>	
 <div id="chat">
 	<div class="chatFrame hidden">
 		<div class="buttons">
-   			<button class="btn-exit"></button>
-   			<button class="btn-close"></button>
+   			<button class="btn-close">창닫기</button>
    		</div>	
 		<div class="chatArea"></div>
 		<div class="ipt">	
@@ -185,6 +202,7 @@
 			<input type="button" value="send" class="btn-send">
 	   	</div>	
 	</div>
+	<div class="chatOpenButton hidden">⬆️</div>
 </div>
 <script>
 
@@ -195,7 +213,9 @@ const chatArea = document.querySelector('.chatArea')
 const chatFrame = document.querySelector('.chatFrame')
 const send = document.querySelector('.btn-send')
 const inputMsg = document.querySelector('.input-message')
-const exit = document.querySelector('.btn-exit')
+const close = document.querySelector('.btn-close')
+const chatOpenButton = document.querySelector('.chatOpenButton');
+
 let chat_idx = null;
 let userid = ''
 
@@ -208,14 +228,31 @@ function onConnect() {
 		writer: username
 	}))
 }
-
-exit.onclick = onDisconnect
 send.onclick = sendMsg
+close.onclick = function() {
+    // 채팅 창이 화살표 아이콘 쪽으로 빨려가는 효과 구현
+    chatFrame.style.bottom = "-600px"; // 채팅 창의 높이만큼 아래로 이동시켜 숨김
+    setTimeout(() => {
+        chatFrame.classList.add('hidden');
+        chatFrame.classList.remove('visible')
+        chatOpenButton.classList.remove('hidden'); // 화살표 버튼 표시
+    }, 500); // transition 시간과 일치시키기
+}
+
+chatOpenButton.onclick = function() {
+    chatFrame.style.bottom = "-600px"
+    chatFrame.classList.remove('hidden')
+    chatFrame.classList.add('visible')
+    setTimeout(() => {
+        chatFrame.style.bottom = "20px"
+    }, 10);
+    chatOpenButton.classList.add('hidden'); 
+}
+
 inputMsg.onkeyup = function(e) {
 	if(e.key == 'Enter') sendMsg()
 	if(e.key == 'Escape') e.target.value = ''
 }
-
 chatList()
 
 async function chatList() {
@@ -245,17 +282,17 @@ async function enterChat(event) {
 	const arr2 = Array.from(result)
 	console.log(arr2)
 	if(arr2.length != 0) {
+		arr2.forEach(e => {
 		let messageDirection = 'message-left'; // 기본적으로 왼쪽 정렬
-       	if(userid == 'admin') { // 현재 사용자가 보낸 메시지인 경우 오른쪽 정렬
+       	if(e.writer == 'admin') { // 현재 사용자가 보낸 메시지인 경우 오른쪽 정렬
          	messageDirection = 'message-right';
       	 }
-		arr2.forEach(e => {
-		 	let str = ''
-		    	str += '<div class="' + messageDirection + '">'
-		    	str += '<div>' + e.nickname + '</div>'
-		    	str += '<div class="content">' + e.content + '</div>'
-		    	str += '</div>'
-		   	chatArea.innerHTML += str
+	 	let str = ''
+	    	str += '<div class="' + messageDirection + '">'
+	    	str += '<div>' + e.nickname + '</div>'
+	    	str += '<div class="content">' + e.content + '</div>'
+	    	str += '</div>'
+	   	chatArea.innerHTML += str
 		})
 	}
    	chatArea.scrollTop = chatArea.scrollHeight;
@@ -275,7 +312,7 @@ async function sendMsg() {
 			method: 'POST',
 			body: JSON.stringify({
 				chat_idx: chat_idx,
-				writer: '관리자',
+				writer: '${login.userid}',
 				content: text
 			}),
 			headers: {
@@ -283,12 +320,10 @@ async function sendMsg() {
 			}
 	}
 	const result = await fetch(url,opt).then(resp=>resp.text())
-	if(userid != ''){
-		stomp.send('/app/sendMsg/' + userid, {}, JSON.stringify({
-			content: text,
-			writer: username
-		}))
-	}
+	stomp.send('/app/sendTo/' + userid, {}, JSON.stringify({
+		content: text,
+		writer: username
+	}))
 }
 
 function onReceive(chat) {
@@ -299,9 +334,7 @@ function onReceive(chat) {
     if(from == username) { // 현재 사용자가 보낸 메시지인 경우 오른쪽 정렬
         messageDirection = 'message-right';
     }
-    if(from == 'service') {
-    	messageDirection = 'message-center'
-    }
+   
     let str = ''
     	str += '<div class="' + messageDirection + '">'
     	str += '<div>' + from + '</div>'
@@ -309,24 +342,6 @@ function onReceive(chat) {
     	str += '</div>'
 	chatArea.innerHTML += str
    	chatArea.scrollTop = chatArea.scrollHeight;
-   	
-}
-
-async function onDisconnect(event) {
-		const url = '${cpath}/disconnect/' + userid
-		const result = await fetch(url).then(resp=>resp.text())
-		
-	event.preventDefault()
-	stomp.send('/app/disconnect/sendTo/' + userid, {}, JSON.stringify({
-		userid: userid,
-		writer: username,
-	}))
-	stomp.disconnect(function(){
-		console.log('Disconnected')
-	})
-	chatFrame.classList.add('hidden')
-	chatFrame.classList.remove('visible')
-	chatIcon.classList.remove('hidden')
 }
 
 </script>

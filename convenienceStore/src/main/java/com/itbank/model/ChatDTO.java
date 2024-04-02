@@ -3,8 +3,6 @@ package com.itbank.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
-
 import org.springframework.web.socket.WebSocketSession;
 
 //	IDX      NOT NULL NUMBER        
@@ -12,7 +10,7 @@ import org.springframework.web.socket.WebSocketSession;
 //	USERID2  NOT NULL VARCHAR2(500) 
 //	CHATDATE          DATE          
 //	STATUS            NUMBER    
-public class ChatRoomDTO {
+public class ChatDTO {
 
 	private int idx;
 //	private String roomId;

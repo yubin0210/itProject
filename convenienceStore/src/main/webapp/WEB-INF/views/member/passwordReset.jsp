@@ -9,30 +9,29 @@
 
 <style>
 		.resetForm {
-			width: 1200px;
-    		margin: auto;
-    		padding-bottom: 300px;
-    		padding-left: 50px;
+			padding-left: 35%;
+            padding-bottom: 300px;
+            padding-top: 100px;
 		}
-		h2.resetMainLogo {
-			padding-top: 70px;
-			padding-bottom: 50px;
-			font-size: 35px;
+		h2 {
+			color : #5d6a7c;
+			padding-left: 13%;
+			padding-bottom: 40px;
 		}
 		div.submitPadding {
 			padding: 40px 0px;
 		}
 		input[type="submit"] {
-			width: 200px;
+			width: 150px;
 			padding: 10px;
 			height: 45px;
-			background-color: #d5e4fb;
-			color: grey;
+			background-color: #1E90FF;
+			color: white;
 			font-weight: bold;
 			font-size: 15px;
 		}
 		.idCheckPadding {
-			padding: 0px 50px;
+			padding: 0px 30px;
 		}
 		button#checkUserid {
 			border: 1px solid grey;
@@ -41,9 +40,61 @@
 			height: 41px;
 		}
 		input {
-			width: 250px;
+			width: 300px;
+			height: 30px;
+			padding: 5px;
+			font-size: 15px;
+			border: 1px solid #ddd;
+  			border-radius: 10px;
+		}
+		div.title {
+			font-size: 15px;
+			color : #4E5968;
+			padding-top: 30px;
+			padding-bottom: 10px;
+			font-weight: bold;
+			
+		}
+		
+		button {
+			font-size: 15px;
+			width: 130px;
+			height: 41px;
+			padding: 5px;
+			border: none;
+			border-radius: 10px;
+		}
+		button#checkUserid {
+			font-size: 15px;
+			width: 130px;
+			height: 41px;
+			padding: 5px;
+			border: none;
+			border-radius: 10px;
+		}
+		.buttonPadding {
+			padding-left: 30px;
+		}
+		#blueButton:focus {
+			width: 130px;
 			padding: 10px;
-			font-size: 17px;
+			height: 45px;
+			background-color: #1E90FF;
+			color: white;
+			font-weight: bold;
+			font-size: 15px;
+		}
+		button#resetButton:focus {
+			width: 130px;
+			padding: 10px;
+			height: 45px;
+			background-color: #1E90FF;
+			color: white;
+			font-weight: bold;
+			font-size: 15px;
+		}
+		.goLogin {
+			padding-top: 40px;
 		}
 
 </style>
@@ -52,33 +103,38 @@
 
 <div class="frame">
 	<div class="resetForm">
-	<h2 class="resetMainLogo">비밀번호 재설정</h2>
+	<h2>비밀번호 재설정</h2>
 	
 		<form>
-			<div class="flex">
-    			<input id="userid" type="text" name="userid" placeholder="ID" required>
-      			<div class="idCheckPadding">
-      				<button type="button" id="checkUserid">ID 확인</button>	
-      				<span id="result1"></span> 
- 		     	</div>
+			<div class="title">아이디</div>
+      	<div class="flex">
+      		<input id="userid" type="text" name="userid" required autofocus>
+      		<div class="idCheckPadding">
+      			<button type="button" id="checkUserid">ID 중복확인</button>	
+      			<span id="result1"></span>
       		</div>
+      	</div>
 		</form>
 		
 		<form>
-			<p>
-				<input type="email" name="email" placeholder="email" disabled>
-				<button>인증번호 발송</button>	
-			</p>
-			<p class="message"></p>
+			<div class="title">이메일</div>
+			<div class="flex">
+				<input type="email" name="email" disabled>
+				<div class="buttonPadding"><button id="blueButton">인증번호 발송</button></div>	
+			</div>
+				<p class="message"></p>
 		</form>
 		
 		<div class="auth box hidden">
 			<form>
-				<h3>인증번호 확인</h3>
-				<p>
+				<div class="title">인증번호</div>
+				<div class="flex">
 					<input type="text" name="authNumber" placeholder="인증번호 입력">
-					<button>인증 확인</button>	
-				</p>
+					<div class="idCheckPadding">
+						<button>인증 확인</button>	
+					</div>
+				</div>
+			
 				<p class="message"></p>
 			</form>
 		</div>
@@ -118,16 +174,20 @@
         	const text = await fetch(url).then(resp => resp.text())
         	document.getElementById("result1").innerText = text 
         	
-        	// 이메일 입력 필드를 찾습니다.
+        	// 이메일 입력 필드찾고
         	const emailInput = document.querySelector('input[name="email"]');
         	
-        	// "계정이 존재합니다" 문자열에 따라 이메일 입력 필드를 활성화 또는 비활성화 합니다.
-        	if (text === "계정이 존재합니다.") {
-            	emailInput.disabled = false; // 계정이 존재하면 이메일 입력을 활성화
-        	} else {
-            	emailInput.disabled = true; // 계정이 존재하지 않으면 이메일 입력을 비활성화
+        	// "계정이 존재합니다" 문자열에 따라 이메일 입력 필드를 활성화 또는 비활성화 
+        	if(text == "입력해주세요.") {
+        		emailInput.disabled = true;
         	}
-        	
+        	else {
+        		if (text === "계정이 존재합니다.") {
+            		emailInput.disabled = false; // 계정이 존재하면 이메일 입력을 활성화
+        		} else {
+            		emailInput.disabled = true; // 계정이 존재하지 않으면 이메일 입력을 비활성화
+        		}
+        	}
     	})
 	})
 

@@ -28,7 +28,12 @@ public class ProductController {
 	@Autowired StoreService storeService;
 	
 	@GetMapping("/storeList/{idx}")
-	public ModelAndView productListByStore(@PathVariable("idx") int idx) {
+	public ModelAndView productListByStore(@PathVariable("idx") int idx, HttpSession session) {
+		MemberDTO login = (MemberDTO) session.getAttribute("login");
+		if(login == null) {
+			ModelAndView mav = new ModelAndView("/alertNeedLogin");
+			return mav;
+		}
 		ModelAndView mav = new ModelAndView("/product/storeList");
 		List<ProductDTO> list = service.productListByStore(idx);
 		StoreDTO storeDTO = storeService.selectOne(idx);

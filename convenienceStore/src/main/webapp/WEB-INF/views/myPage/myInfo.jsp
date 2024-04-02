@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style>
 	.tablePadding {
-		padding-left: 80px;
+		padding-left: 35%;
 		padding-top: 100px;
 		padding-bottom: 300px;
 	}
@@ -26,89 +26,86 @@
 		font-size: 17px;
 	}
 	input {
-			width: 270px;
-			height: 25px;
-			padding: 5px;
-			font-size: 15px;
-			border: 1px solid #ddd;
-  			border-radius: 5px;
+		width: 300px;
+		height: 30px;
+		padding: 5px;
+		font-size: 16px;
+		border: 1px solid #ddd;
+  		border-radius: 10px;
+  		color : #4E5968;
+  		
 	}
+	div.title {
+		font-size: 15px;
+		color : #4E5968;
+		padding-top: 30px;
+		padding-bottom: 10px;
+		font-weight: bold;
+	}
+	button {
+		font-size: 15px;
+		width: 130px;
+		height: 41px;
+		padding: 5px;
+		border: 1px solid #ddd;
+		border-radius: 10px;
+	}
+	h2 {
+		color : #5d6a7c;
+		padding-left: 13%;
+		padding-bottom: 40px;
+	}
+
 </style>
 </head>
 <body>
 
 	<div class="frame">
 		<div class="tablePadding">
+		<h2>회원정보</h2>
 		<c:forEach var="dto" items="${list }">
-			<table border="1" cellpadding="20" cellspacing="0" style="border-collapse: collapse; border-color: #ccc;">
-				<tr>
-					<th>아이디</th>
-					<td>
-						${dto.userid }
-						<input type="hidden" name="userid" value="${dto.userid }">
-					</td>
-				</tr>
-				<tr>
-					<th>닉네임</th>
-					<td>${dto.nickname }</td>
-				</tr>
-				<tr>
-					<th>비밀번호</th>
-					<td>
-						<input type="password" name="userpw">
-					</td>
-				</tr>
-				<tr>
-					<th>비밀번호 재확인</th>
-					<td>
-						<div class="flex">
-							<form>
-							<input type="password" name="doubleCheck">
-							<button>일치 여부 확인</button>
-							<p class="message"></p>
-							</form>
+			<div class="title">아이디</div>
+			<input type="text" name="userid" value="${dto.userid }" readonly>
+			<input type="hidden" name="userid" value="${dto.userid }">
+			
+			<div class="title">닉네임</div>
+			<input type="text" name="nickname" value="${dto.nickname }" readonly>
+				
+				
+			<div class="title">비밀번호</div>
+			<input type="password" name="userpw">
+				
+			<div class="title">비밀번호 재확인</div>
+			<div class="flex">
+				<form>
+					<input type="password" name="doubleCheck">
+					<button>일치 여부 확인</button>
+					<p class="message"></p>
+				</form>
 							
-						</div>
-							<form>
-								<button id="resetButton" disabled>비밀번호 재설정</button>
-								<p class="result"></p>
-							</form>
-					</td>
+			</div>
+				<form>
+					<button id="resetButton" disabled>비밀번호 재설정</button>
+					<p class="result"></p>
+				</form>
 					
-				</tr>
-				<tr>
-					<th>이메일</th>
-					<td>
-						<form>
-							<input type="email" name="email" value="${dto.email }">
-							<button>수정</button>
-							<p class="update"></p>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<th>전화번호</th>
-					<td>
-						<form>
-							<input type="text" name="pnum" value="${dto.pnum }">
-							<button>수정</button>
-							<p class="updatePnum"></p>
-						</form>
-					</td>
-				</tr>
+			<div class="title">이메일</div>
+			<form>
+			<input type="email" name="email" value="${dto.email }">
+				<button>이메일 수정</button>
+				<p class="update"></p>
+			</form>
+				
+			<div class="title">전화번호</div>
+				<form>
+					<input type="text" name="pnum" value="${dto.pnum }">
+					<button>전화번호 수정</button>
+					<p class="updatePnum"></p>
+				</form>
 		
-			</table>
 		</c:forEach>
 		</div>
-		
-		<div class="delete">
-			<form>
-				<input type="text" name="" value="${dto.pnum }">
-				<button>수정</button>
-				<p class="updatePnum"></p>
-			</form>
-		
-		</div>
+
 	</div>
 
 <script>
@@ -135,7 +132,11 @@ checkingForm.onsubmit = async function(event) {
 	
 	const resetButton = document.getElementById('resetButton')
 	
-	if(result == 1) {
+	if(result == -1) {
+		message.innerText = '*입력해주세요.'
+		resetButton.disabled = true;
+	}
+	else if(result == 1) {
 		message.innerText = '*비밀번호가 일치합니다.'
 		resetButton.disabled = false
 	}
@@ -196,10 +197,10 @@ EmailResetForm.onsubmit = async function(event) {
 	const result = await fetch(url, opt).then(resp => resp.text())
 	const message = event.target.querySelector('p.update')
 	if(result == 1) {
-		message.innerText = '변경 성공'
+		message.innerText = '변경 완료'
 	}
 	else {
-		message.innerText = '변경실패'
+		message.innerText = '변경 실패'
 	}
 }
 
@@ -225,10 +226,10 @@ pnumResetForm.onsubmit = async function(event) {
 	const result = await fetch(url, opt).then(resp => resp.text())
 	const message = event.target.querySelector('p.updatePnum')
 	if(result == 1) {
-		message.innerText = '변경 성공'
+		message.innerText = '변경 완료'
 	}
 	else {
-		message.innerText = '변경실패'
+		message.innerText = '변경 실패'
 	}
 }
 

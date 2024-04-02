@@ -39,11 +39,18 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(HttpSession session, MemberDTO dto) {
+	public ModelAndView login(HttpSession session, MemberDTO dto) {
 		MemberDTO login = ms.login(dto);
 		session.setAttribute("login", login);
-		// alert 띄우거나 마음대루
-		return "redirect:/";
+		
+	      if(login == null) { 
+	          ModelAndView mav = new ModelAndView("/member/loginFail");
+	          return mav;
+	       }
+	      else {
+	    	  ModelAndView mav = new ModelAndView("redirect:/");
+	    	  return mav;  
+	      }
 	}
 	
 	@GetMapping("/join")

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itbank.model.MylocationDTO;
 import com.itbank.model.StoreDTO;
 import com.itbank.model.StoreReviewDTO;
 import com.itbank.repository.StoreDAO;
@@ -106,8 +107,8 @@ public class StoreService {
 		return dao.selectStoreLikeTop();
 	}
 
-	
-
-	
+	public MylocationDTO selectLocation(int idx) {
+		return dao.selectMyLocation(idx);
+	}
 
 }

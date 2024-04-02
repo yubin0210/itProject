@@ -65,7 +65,7 @@
           padding-bottom: 50px;
        }
        #logo {
-          width: 130px;
+          width: 180px;
           padding-left: 0px;
        }
        .menuText > li {
@@ -115,8 +115,8 @@
             <c:if test="${login.role == 3 }">
             	<div class="header-cart"><a href="${cpath }/payment/cart">장바구니</a><div class="${count == '0' ? '':'header-cart-count' }">${count == '0' ? '':count }</div></div>
 	            <div><a href="${cpath }/myPage/myPageMain?userid=${login.userid}">마이페이지</a></div>
-	            <div><a href="${cpath }/inquiry/list">1:1 문의</a></div>
             </c:if>
+            <div><a href="${cpath }/inquiry/list">고객센터</a></div>
          </c:if>
       </div>
       </div>
@@ -124,7 +124,7 @@
       <div class="topMenuBorder">
          <div class="topList frame">
             <ul class="flex menuText">
-               <li><a href="${cpath }/"><img id="logo" src="${cpath }/resources/image/home/GS25로고.png"></a></li>
+               <li><a href="${cpath }/"><img id="logo" src="${cpath }/resources/image/home/로고.png"></a></li>
                <c:if test="${login.role == 3 || login == null }">
                		<li><a href="${cpath }/product/list">재고찾기</a></li>
                </c:if>
