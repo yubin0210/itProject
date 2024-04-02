@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.repository.ProductAdminDAO">
+	
+	<select id="selectList" resultType="productAdmin">
+		select * from product order by idx desc
+	</select>
+	
+	<select id="selectCount" parameterType="param" resultType="int">
+		select count(*) from product
+		where name like '%' || #{name} || '%' and category_idx like '%' || #{category_idx} || '%'
+	</select>
+	
+	<select id="searchList" parameterType="param" resultType="productAdmin">
+		select * from product
+		where name like '%' || #{name} || '%' and category_idx like '%' || #{category_idx} || '%'
+		order by idx desc offset #{paging.offset} rows fetch next #{paging.fetch} rows only
+	</select>
+	
+	<select id="detail" parameterType="int" resultType="productAdmin">
+		select * from product where idx = #{idx}
+	</select>
+	
+	<select id="thisName" parameterType="String" resultType="productAdmin">
+		select * from product where name = #{name}
+	</select>
+	
+	<insert id="add" parameterType="productAdmin">
+		insert into product
+		<choose>
+			<when test="event.length() == 0">
+				(name, category_idx, content, price, image) 
+				values (#{name }, #{category_idx }, #{content }, #{price }, #{image })
+			</when>
+			<otherwise>
+				(name, category_idx, content, price, event, image) 
+				values (#{name }, #{category_idx }, #{content }, #{price }, #{event }, #{image })
+			</otherwise>
+		</choose>
+	</insert>
+	
+	<insert id="addInv" parameterType="int">
+		insert into inventory (product_idx, store_idx, cnt) 
+		select #{idx} as product_idx, level as store_idx, 99 as cnt 
+		from dual connect by level = (select max(idx) from store)
+	</insert>
+	
+	<update id="update" parameterType="productAdmin">
+		update product set name = #{name }, category_idx = #{category_idx }, content = #{content }, price = #{price },
+		<choose>
+			<when test="event.length() == 0">
+				event = '행사없음', image = #{image } where idx = #{idx }
+			</when>
+			<otherwise>
+				event = #{event }, image = #{image } where idx = #{idx }
+			</otherwise>
+		</choose>
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from product where idx = #{idx }
+	</delete>
+	
+	<delete id="deleteInv" parameterType="int">
+		delete from inventory where product_idx = #{idx}
+	</delete>
+	
+</mapper>

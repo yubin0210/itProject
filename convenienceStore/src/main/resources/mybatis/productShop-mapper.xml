@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.repository.ProductShopDAO">
+	
+	<select id="selectCount" parameterType="param" resultType="int">
+		select count(*) from product p 
+		join inventory i on p.idx = i.product_idx 
+		join manager m on i.store_idx = m.store_idx 
+		join store s on m.store_idx = s.idx 
+		and #{userid} = m.userid 
+		where p.name like '%' || #{name} || '%' and p.category_idx like '%' || #{category_idx} || '%'
+	</select>
+	
+	<select id="searchList" parameterType="param" resultType="productShop">
+		select i.cnt, i.product_idx, i.idx as iidx, s.idx as sidx, s.name as sname, p.* from product p 
+		join inventory i on p.idx = i.product_idx 
+		join manager m on i.store_idx = m.store_idx 
+		join store s on m.store_idx = s.idx 
+		and #{userid} = m.userid 
+		where p.name like '%' || #{name} || '%' and p.category_idx like '%' || #{category_idx} || '%' 
+		order by i.cnt asc, p.idx desc offset #{paging.offset} rows fetch next #{paging.fetch} rows only
+	</select>
+	
+	<select id="detail" parameterType="param" resultType="productShop">
+		select i.cnt, p.* from product p 
+		join inventory i on p.idx = i.product_idx 
+		join manager m on i.store_idx = m.store_idx 
+		join store s on m.store_idx = s.idx 
+		and #{userid} = m.userid where p.idx = #{idx}
+	</select>
+	
+	<update id="updateCnt" parameterType="productShop">
+		update inventory set cnt = #{cnt} 
+		where idx = #{idx} and store_idx = #{store_idx} and product_idx = #{product_idx}
+	</update>
+	
+</mapper>
