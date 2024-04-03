@@ -109,13 +109,13 @@
 		</c:if>
 	</c:forEach>
 </div>
-
-<div id="chat">
-	<a href="${cpath }/inquiry/userChat">
-		<img id="chatIcon" src="${cpath }/resources/image/chat아이콘3.png">
-	</a>
-</div>
-	
+<c:if test="${login.userid != 'admin' }">
+	<div id="chat">
+		<a href="${cpath }/inquiry/userChat">
+			<img id="chatIcon" src="${cpath }/resources/image/chat아이콘3.png">
+		</a>
+	</div>
+</c:if>
 
 
 <script>

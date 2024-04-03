@@ -80,5 +80,9 @@ public class HomeController {
 		
 		return mav;
 	}
+	@GetMapping("/project")
+	   public String project() {
+	      return "project";
+	   }
 	
 }

@@ -287,11 +287,7 @@ create table eventBoard (
 create table faqBoard (
     idx             number          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title           varchar2(1000)  not null,
-    answer          varchar2(4000)  not null,
-    
-    constraint faqBoard_member_fk
-    foreign key (writer)
-    references member(userid) on delete cascade
+    answer          varchar2(4000)  not null
 );
 
 create table chat (

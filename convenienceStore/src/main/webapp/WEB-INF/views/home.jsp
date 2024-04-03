@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-	<style>
-        body {
-            overflow-x: hidden;
-        }
+<style>
+body {
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 폰트 변경 */
+}
+      .main1, .main2, .main3 {
+		   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 박스 그림자 추가 */
+		   border-radius: 20px; /* 모서리 둥글게 */
+		   background-color: #ffffff; /* 배경색 변경 */
+		   padding: 20px; /* 패딩 추가 */
+		   margin-bottom: 30px; /* 하단 여백 추가 */
+	}
         .main1 {
             width: 1200px;
             height: 400px;
@@ -52,6 +60,11 @@
             border-radius: 20px;
             z-index: 10;
         }
+        .event-title h1, .product-top10-title, .storeLikeTop-title {
+    color: #014b7d; 
+    margin-bottom: 20px;
+    text-align: center; 
+}
         .product-top10 > div:first-child,
         .storeLikeTop > div:first-child {
             position: absolute;
@@ -150,10 +163,12 @@
         .main3 > div > div > img {
         	border-radius: 10px;
         }
+        
         .event-sub { position: relative; }
         .event-sub > div {
             height: 150px;
             width: 550px;
+            
         }
         .event-sub > div > img {
         	width: 550px;
