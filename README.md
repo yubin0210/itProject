@@ -30,6 +30,12 @@ HikariCP, mybatis, commons-fileupload,
 jackson-databind, spring-websocket,   
 spring-integration-stomp, jakarta.mail, scribejava  
 
+
+### 사용한 api
+naver login api  
+Kakao map api  
+toss payments api  
+
 <br>
 
 ### 요구사항 명세서
@@ -45,10 +51,6 @@ spring-integration-stomp, jakarta.mail, scribejava
 
 
 
-### 사용한 api
-naver login api  
-Kakao map api  
-toss payments api  
 
 
 <hr>
