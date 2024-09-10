@@ -152,9 +152,17 @@ toss payments api
 
 ![게시판.png](https://github.com/yubin0210/itProject/blob/master/upload/%EA%B2%8C%EC%8B%9C%ED%8C%90.png)
 
-이용자들의 질문과 이에 대한 답변들을 모아놓은 게시판 입니다. 웹마스터 모드로 접속시 해당 글들을 관리(추가, 수정, 삭제 등)할 수 있습니다.
+이용자들의 질문과 이에 대한 답변들을 모아놓은 게시판 입니다. 
+
+웹마스터 모드로 접속시 해당 글들을 관리(추가, 수정, 삭제 등)할 수 있습니다.
 
 ***
+
+![유저채팅.png](https://github.com/yubin0210/itProject/blob/master/upload/%EC%9C%A0%EC%A0%80%EC%B1%84%ED%8C%85.png)
+
+사이트 이용 중 불편, 에로사항이 있을 시에 실시간으로 채팅 문의가 가능합니다. 
+
+관리자는 여러 고객과 각각 1:1로 채팅 상담을 진행 할 수 있습니다.
 
 
 
