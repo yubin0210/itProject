@@ -119,3 +119,43 @@ toss payments api
 - 전체 상품관리
 - 점주 가입신청 관리
 
+## Preview
+
+<hr>
+
+![로그인.png](https://github.com/yubin0210/itProject/blob/master/upload/%EB%A1%9C%EA%B7%B8%EC%9D%B8.png)
+![네이버로그인.png](https://github.com/yubin0210/itProject/blob/master/upload/%EB%84%A4%EC%9D%B4%EB%B2%84%EB%A1%9C%EA%B7%B8%EC%9D%B8.png)
+
+사이트 이용자들의 접근성과 편의성을 높이기 위해 네이버 아이디와 연동하여 로그인이 가능하게 구현하였습니다.
+
+***
+
+![재고찾기.png](https://github.com/yubin0210/itProject/blob/master/upload/%EC%9E%AC%EA%B3%A0%EC%B0%BE%EA%B8%B0.png)
+
+지도 위에 마커로 편의점 위치를 나타내어 이용자들이 쉽게 위치 정보를 알 수 있게 하였습니다.
+
+화면 우측에는 자신의 위치와 가까운 순서대로 편의점 위치가 리스트로 출력됩니다.
+
+***
+
+![점주재고관리.png](https://github.com/yubin0210/itProject/blob/master/upload/%EC%A0%90%EC%A3%BC%EC%9E%AC%EA%B3%A0%EA%B4%80%EB%A6%AC.png)
+
+점주로 등록된 회원은 자신의 매장 재고를 관리 할 수 있습니다.
+
+***
+
+![결제.png](https://github.com/yubin0210/itProject/blob/master/upload/%EA%B2%B0%EC%A0%9C.png)
+
+테스트용 결제 API를 이용하여 실제 결제가 발생하는 것과 똑같이 구현하였습니다.
+
+***
+
+![게시판.png](https://github.com/yubin0210/itProject/blob/master/upload/%EA%B2%8C%EC%8B%9C%ED%8C%90.png)
+
+이용자들의 질문과 이에 대한 답변들을 모아놓은 게시판 입니다. 웹마스터 모드로 접속시 해당 글들을 관리(추가, 수정, 삭제 등)할 수 있습니다.
+
+***
+
+
+
+
